@@ -1,3 +1,5 @@
+import time
+
 def NOR(a, b):
     if(a == '0') and (b == '0'):
         return True
@@ -17,7 +19,7 @@ def OR(a, b):
 
 def bitWiseORArray(intArray, target):
     sum_found = False
-    if(len(intArray) < 1) : return sum_found
+    if(len(intArray) < 1) : return True
 
     possilbe_solutions = list()
     #possilbe_solutions_bin = list()
@@ -49,12 +51,42 @@ def bitWiseORArray(intArray, target):
     #print('Possible Solutions:',possilbe_solutions_bin)
     return sum_found
 
-
-array_to_test = [10, 9, 8]
-sum_to_test = 7
-print('target:',sum_to_test)
-print('intArray:',array_to_test)
-if(bitWiseORArray(array_to_test,sum_to_test)):
-    print('Possilbe')
-else:
-    print('Not Possible')
+inputs = [
+           [1, 2, 4, 8],
+           [0],
+           [9],
+           [],
+           [1, 4, 8],
+           [16, 1, 4, 8],
+           [16, 1, 4, 8],
+           [16, 1, 4, 8],
+           [0, 17, 4, 18, 200]
+       ]
+targets = [7,0,9,0,7,11,26,25,19]
+answers = [ 'true',
+        'true',
+        'true',
+        'true',
+        'false',
+        'false',
+        'false',
+        'true',
+        'true']
+i = 0
+for input, target in zip(inputs, targets):
+    print('target:',target)
+    print('intArray:',input)
+    time.sleep(1)
+    if(bitWiseORArray(input,target)):
+        print('true')
+        if answers[i] == 'true':
+            print('CORRECT\n\n')
+        else:
+            print('WRONG\n\n')
+    else:
+        print('false')
+        if answers[i] == 'false':
+            print('CORRECT\n\n')
+        else:
+            print('WRONG\n\n')
+    i = i +1
